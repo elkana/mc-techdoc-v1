@@ -1,0 +1,7 @@
+// buat manual nih
+
+{
+    "eslint.workingDirectories": [
+      "src"
+    ]
+  }
