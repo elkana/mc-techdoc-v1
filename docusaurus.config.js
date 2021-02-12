@@ -2,7 +2,7 @@ module.exports = {
   title: 'Mobile Collection System',
   tagline: 'Technical Documentation for MCS',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/techdoc/',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'ignore',
   favicon: 'img/favicon.ico',
