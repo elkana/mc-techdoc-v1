@@ -107,7 +107,7 @@ start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name
 ```
 |Key |Deskripsi | 
 |-|-|
-| file   | Lokasi file jar untuk service database. Biasanya mengacu ke versi terbaru. | 
+| file   | Lokasi file <code>.jar</code> untuk service database. Biasanya mengacu ke versi terbaru. | 
 | dbip   | Nama database    |
 | dbname | Login user database    |
 | dbname | Login user database    |
@@ -116,7 +116,7 @@ start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name
 
 Jika ada perubahan konfigurasi database, cukup diubah variable <code>dbip</code>, <code>dbname</code>, <code>dbuser</code>, <code>dbpwd</code>.
 
-Konsultasikan dengan Database Administrator untuk informasi aksesnya.
+Konsultasikan dengan **Database Administrator** untuk informasi aksesnya.
 Setiap perubahan variabel harus dilakukan restart service.
 
 ---
@@ -193,7 +193,8 @@ Sebagai contoh lihat tabel port berikut :
 |blocked|8092|[database-service](#svcdatabase-xxxbat)|
 
 Maka berdasarkan port public di atas untuk pengecekan public URL yang harus dapat diakses sebagai berikut :
-```
+
+```sh
 $ curl --insecure https://112.78.148.118:7043/collector/v1/get_server_info
 
 $ curl http://112.78.148.118:8000/apk/coll/app-release.apk
