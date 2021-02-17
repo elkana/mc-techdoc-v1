@@ -3,6 +3,7 @@ title: Architecture
 sidebar_label: Architecture
 ---
 
+![Architecture](../static/img/architecture.png#center)
 
 ## Mobile
 Diperlukan sistem operasi Android minimal Marshmallow dengan pertimbangan target market dan keamanan.

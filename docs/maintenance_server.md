@@ -39,7 +39,7 @@ A: Total ada 5 (lima) file batch yang harus dijalankan :
 
 Dengan alasan performance, data-data master akan di refresh oleh Job scheduler yang aktif tiap hari pukul tengah malam. 
 
-Sehingga jika ada perubahan di data master akan efektif di H+1.
+Sehingga jika ada perubahan di data master akan efektif di **H+1**.
 Job ini dijalankan oleh Database Service.
 
 Untuk kondisi tertentu yang memerlukan refresh secepatnya, bisa dilakukan dengan cara memanggil url API intranet:
