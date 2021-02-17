@@ -14,10 +14,9 @@ sidebar_label: Update Mobile
 ## Step-by-step
 
 1. Akses ke mesin aplikasi, pastikan direktori `C:\u11\` masih ada. Jika tidak ada, lihat Panduan Instalasi Aplikasi.
-1. Backup folder `C:\U11\installer\apk` ke lokasi lain
+1. Backup folder `C:\u11\installer\apk` ke lokasi lain
 1. Extract file `patch-apk.zip` ke direktori `C:\u11\`
-
-1. Pastikan terdapat 4 (empat) file di lokasi berikut:
+1. Pastikan terdapat 4 (empat) file di lokasi berikut :
 
     |No|Nama file|Estimasi ukuran|Penempatan direktori|
     |--|---------|---------------|--------------------|
@@ -28,8 +27,8 @@ sidebar_label: Update Mobile
 
 1. Persiapkan informasi build number seperti di prasyarat no 2.
 1. Login ke aplikasi SSMS, buka koneksi ke database `collmobile`, cari table `[dbo].[mc_mst_mobile_setup]`
-1. Klik kanan table `dbo.mc_mst` → Edit Top 200 Rows
-1. Cari 4 keyname berikut, ubah angka yang berwarna merah di kolom value1 disesuaikan dengan informasi build number di prasyarat nomor 2.
+1. Klik kanan table `dbo.mc_mst` → **Edit Top 200 Rows**
+1. Cari 4 keyname berikut, ubah angka yang berwarna merah di kolom _value1_ disesuaikan dengan informasi build number di prasyarat nomor 2.
 
     |keyname|value1|value2|
     |-------|------|------|
@@ -49,15 +48,15 @@ sidebar_label: Update Mobile
     http://[*IP-Publik]:8000/apk/coll/[subpath]/[namafile.apk]
     ```
 
-    >IP-Publik bisa saja berubah-ubah tergantung kebijakan Network Administrator.  Penggunaan IP akan dipakai oleh mobile untuk memperbarui dirinya sendiri (self-update) pada saat login online.
+    >IP-Publik / Port bisa saja berubah-ubah tergantung kebijakan Network Administrator.  Penggunaan IP akan dipakai oleh mobile untuk memperbarui dirinya sendiri (self-update) pada saat **login online**.
+    Karena MCS bisa beroperasi dalam keadaan offline, maka self-update tidak akan aktif sampai kondisi Close Batch atau Reset Local Data.
     
-    Untuk memastikan URL benar bisa menggunakan tools seperti curl atau browser Chrome seperti contoh berikut:
+    Untuk memastikan URL benar bisa menggunakan tools seperti `curl` atau browser `Chrome` seperti contoh berikut:
     ```sh
     $ curl http://112.78.148.118:8000/apk/coll/app-release.apk
     ```
     
-    Peringatan ! Jangan membagikan informasi URL ini kepada siapapun yang tidak berkeperluan. 
-
+    >Peringatan ! Jangan membagikan informasi URL ini kepada siapapun yang tidak berkeperluan. 
     URL tersebut hanya diakses oleh aplikasi mobile.
 
 
