@@ -5,7 +5,7 @@ sidebar_label: Table Setup
 
 * Nama table: <code>mc_mst_mobile_setup</code>
 
-## General
+## General Setup
 
 |keyname |value1 | value2 | description |
 |-|:-:|-|-|
@@ -19,7 +19,7 @@ sidebar_label: Table Setup
 |MAX_PTP_DAYS|10| |Jumlah maksimal hari janji bayar |
 |TRANSFER_CASH2BANK_DISABLED|1| |0: mengaktifkan menu transfer bank<br/>1: menonaktifkan menu transfer bank |
 
-## Struk
+## Struk Setup
 
 |keyname |value1 | value2 | description |
 |-|:-:|-|-|

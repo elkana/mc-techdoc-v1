@@ -15,7 +15,7 @@ Di Windows, masing-masing service berjalan di atas console, tutup console dengan
 
 atau...
 
-via Task Manager, dengan klik kanan service yang diinginkan, lalu **End Task**
+via **Task Manager**, dengan klik kanan service yang diinginkan, lalu **End Task**
 
 Setelah itu jalankan kembali file `svc.[nama service].bat` yang diinginkan.
 
@@ -45,8 +45,9 @@ Job ini dijalankan oleh Database Service.
 Untuk kondisi tertentu yang memerlukan refresh secepatnya, bisa dilakukan dengan cara memanggil url API intranet:
 
 ```ssh
-$ curl http://192.168.100.26:8092/data/setup/v1/clean_cache
+$ curl http://192.168.100.26:[port-db]/data/setup/v1/clean_cache
 ```
+Lihat [port-db](installation#configure-port)
 
 Jika berhasil akan tampak responnya seperti :
 ```
@@ -60,7 +61,7 @@ Anda juga dapat melakukan update suatu service saja tanpa perlu me-restart semua
 
 Masing-masing service dapat berjalan secara loose coupling / portable sehingga suatu service dapat di-update tanpa harus mematikan service yang lainnya.  
 
-Untuk panduan update lihat Dokumen Panduan Update Android dan Dokumen Panduan Update Service.
+Untuk panduan update lihat Dokumen Panduan [Update Android](update_mobile) dan Dokumen Panduan [Update Service](update_microsvc).
 
 ---
 ## Restart Database SQL Server Instance

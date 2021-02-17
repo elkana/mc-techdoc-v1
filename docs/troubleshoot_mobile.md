@@ -1,10 +1,8 @@
 ---
-title: Troubleshooting
-sidebar_label: Troubleshooting
+title: Troubleshooting Mobile
+sidebar_label: Mobile
 ---
 
 
-## Troubleshooting Mobile
-
-Untuk Server lihat [Troubleshooting Server](#troubleshoot_server)
+Untuk Server lihat [Troubleshooting Server](troubleshoot_server)
 

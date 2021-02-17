@@ -4,12 +4,15 @@ sidebar_label: Update Microservices
 ---
 
 ## Prerequisites
-file `patch-services-YYYYMMDD.zip`
+* file `patch-services-YYYYMMDD.zip`
 
 ## Tools
 1. Windows Explorer
 1. Notepad
 1. curl (opsional)
+
+## Estimation
+5 - 15 menit
 
 ## Step-by-step
 
@@ -20,7 +23,7 @@ Gunakan metode sederhana Close-Replace-Run
 
 Untuk mencegah terganggunya proses di mobile client, sebaiknya update hanya dilakukan di malam hari dan performance CPU mencapai titik idle (atau di bawah 1%). Anda bisa menggunakan Task Manager Windows untuk memantau performance mesin.
 
-1. Akses ke mesin aplikasi, pastikan direktori `C:\u11\` masih ada. Jika tidak ada, lihat Panduan Instalasi.
+1. Akses ke mesin aplikasi, pastikan direktori `C:\u11\` masih ada. Jika tidak ada, lihat [Panduan Instalasi](installation#step-by-step).
 
 1. Stop semua service collection. Temukan service yang sedang aktif di Task Manager dari daftar berikut:
     1. Database Service
@@ -93,8 +96,11 @@ c:/u11/
 │   └── apk
 │   |   └── coll
 │   |       ├── arm32
+|   |       |   └── app-armeabi-v7a-release.apk
 │   |       ├── arm64
+|   |       |   └── app-arm64-v8a-release.apk
 |   |       ├── x86_64
+|   |       |   └── app-x86_64-release.apk
 │   |       └── app-release.apk
 │   └── mcservices
 |       ├── mcdb-service.jar
@@ -112,43 +118,36 @@ c:/u11/
 ## Tes Public URL
 Ada 2 port yang perlu bisa diakses ke publik. Untuk itu perlu dilakukan pengecekan untuk URL berikut :
 ```
-https://112.78.148.118:[port]/collector/v1/get_server_info
+https://112.78.148.118:[port-gateway]/collector/v1/get_server_info
 ```
 
 ```
-http://112.78.148.118:[port]/apk/coll/app-release.apk
+http://112.78.148.118:[port-apk]/apk/coll/app-release.apk
 ```
+Lihat [port](installation#configure-port)
 
 Anda bisa menggunakan tools seperti curl atau Chrome browser untuk memastikan kedua URL di atas aktif.
 ```sh
-C:\>curl --insecure https://112.78.148.118:[port]/collector/v1/get_server_info
+C:\>curl --insecure https://112.78.148.118:[port-gateway]/collector/v1/get_server_info
 {"serverDate":1609321090577}
 
-C:\>curl http://112.78.148.118:[port]/apk/coll/app-release.apk
+C:\>curl http://112.78.148.118:[port-apk]/apk/coll/app-release.apk
 Warning: Binary output can mess up your terminal. Use "--output -" to tell
 Warning: curl to output it to your terminal anyway, or consider "--output
 Warning: <FILE>" to save to a file.
 ```
+Lihat [port](installation#configure-port)
 
-Ketersediaan port publik di atas perlu dikoordinasikan dengan Network Administrator jika ada perubahan karena biasanya dibedakan antara port development dan production. 
-Setup port hanya dilakukan sekali saja saat prosedur Instalasi di awal.
+Ketersediaan port publik di atas perlu dikoordinasikan dengan Network Administrator jika ada perubahan karena biasanya dibedakan antara port _development_ dan _production_. 
+>Setup port hanya dilakukan sekali saja saat [prosedur Instalasi](installation#configure-port) di awal.
 
-Panduan Menutup Microservice
+## Closing Microservice
 Di Windows, masing-masing service berjalan diatas console, tutup console bisa dilakukan dengan 3 cara:
-Klik tombol X di kanan atas seperti contoh berikut:
-
-
-
-atau 
-
-
-via Task Manager, dengan klik kanan service yang diinginkan, lalu End Task
-
-
-atau
-
-
-Tekan kombinasi keyboard `Ctrl + C`
+* Klik tombol X di kanan atas  
+    atau 
+* via **Task Manager**, dengan klik kanan service yang diinginkan, lalu **End Task**  
+    atau
+* Tekan kombinasi keyboard `Ctrl + C`
 
 
 ## Troubleshooting
@@ -159,7 +158,7 @@ Database Service - Proses terhenti di log
 HikariPool-1 - Start Completed 
 ```
 
-Jika setelah ditunggu 5 menit proses tidak berlanjut yang disebabkan gagal berkomunikasi dengan database, Anda harus meminta bantuan Database Administrator untuk melakukan _restart_ database instance SQL SERVER via `SSMS`. Lihat Panduan Restart Database.
+Jika setelah ditunggu 5 menit proses tidak berlanjut yang disebabkan gagal berkomunikasi dengan database, Anda harus meminta bantuan Database Administrator untuk melakukan [_restart_](install_dbmssql#restart-database) database instance SQL SERVER via `SSMS`. Lihat Panduan [Restart Database](install_dbmssql#restart-database).
 
 
 

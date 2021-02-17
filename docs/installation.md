@@ -40,8 +40,11 @@ c:/u11/
 │   └── apk
 │   |   └── coll
 │   |       ├── arm32
+|   |       |   └── app-armeabi-v7a-release
 │   |       ├── arm64
+|   |       |   └── app-arm64-v8a-release
 |   |       ├── x86_64
+|   |       |   └── app-x86_64-release.apk
 │   |       └── app-release.apk
 │   └── mcservices
 |       ├── mcdb-service.jar
@@ -102,8 +105,8 @@ Berikut ini ada 5 (lima) file batch yang wajib dijalankan:
 XXX menunjukkan mesin database yang dituju apakah development / uat / production. Gunakan aplikasi Notepad untuk melihat isi file.
 ```
 @echo off
-set file=installer/mcservices/mcgateway-service.jar
-start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name
+set file=installer/mcservices/mcgateway-service1-1.0.0-SNAPSHOT.jar
+start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name=mc-logs/gateway.log -Dspring.main.banner-mode=off %file%
 ```
 |Key |Deskripsi | 
 |-|-|
@@ -123,8 +126,13 @@ Setiap perubahan variabel harus dilakukan restart service.
 ### svc.media.bat
 ```
 @echo off
-set file=installer/mcservices/mcgateway-service.jar
-start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name
+set file=installer/mcservices/mcmedia-service1-1.0.1.jar
+set dircontract=E:/u01/collection-media/contracts/
+set dirpoa=E:/u01/collection-media/contracts/
+set dircollectorprofile=E:/u01/collection-media/profile/collector/
+set dirsupervisorprofile=E:/u01/collection-media/profile/supervisor/
+set dircustomerprofile=E:/u01/collection-media/profile/customer/
+start "MEDIA-service" java -jar -Dcontract.photo.path=%dircontract% -Dpoa.photo.path=%dirpoa% -Dprofile.collector.photo.path=%dircollectorprofile% -Dprofile.supervisor.photo.path=%dirsupervisorprofile% -Dprofile.customer.photo.path=%dircustomerprofile% -Dlogging.file.name=mc-logs/media.log -Dspring.main.banner-mode=off %file%
 ```
 Script di atas menunjukkan beberapa variabel sbb :
 
@@ -144,8 +152,8 @@ Seperti terlihat, root direktori untuk menampung foto-foto berada di lokasi <cod
 ### svc.collector.bat
 ```
 @echo off
-set file=installer/mcservices/mcgateway-service.jar
-start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name
+set file=installer/mcservices/mccollector-service2-1.1.1.jar
+start "COLLECTOR-service" java -jar -Dlogging.file.name=mc-logs/collector.log -Dspring.main.banner-mode=off %file%
 ```
 Script di atas menunjukkan beberapa variabel sbb :
 
@@ -160,8 +168,8 @@ Setiap perubahan variabel harus dilakukan restart service.
 ### svc.gateway.bat
 ```
 @echo off
-set file=installer/mcservices/mcgateway-service.jar
-start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name
+set file=installer/mcservices/mcgateway-service1-1.0.0-SNAPSHOT.jar
+start "GATEWAY-service" java -jar -Dlocalhost=localhost -Dlogging.file.name=mc-logs/gateway.log -Dspring.main.banner-mode=off %file%
 ```
 Script di atas menunjukkan beberapa variabel sbb :
 
@@ -174,7 +182,10 @@ Setiap perubahan variabel harus dilakukan restart service.
 
 ---
 ### svc.APK-OTA.bat
-
+```
+@echo off
+start "APK-OTA-service" python -m http.server --d installer\ 8000
+```
 Untuk file batch ini tidak ada yang perlu dikonfigurasi.
 
 ---
@@ -184,13 +195,13 @@ Diperlukan 2 (dua) port yang perlu dibuka untuk public di mesin aplikasi. Kedua 
 
 Sebagai contoh lihat tabel port berikut :
 
-|Port Public|Port Private<br/>(Tidak boleh diubah)|Nama Service|
-|-|:-:|-|
-|8000 (contoh)|8000|[apk-ota service](#svcapk-otabat)|
-|7043 (contoh)|7443|[gateway-service](#svcgatewaybat)|
-|blocked|8093|[collector-service](#svccollectorbat)|
-|blocked|8123|[media-service](#svcmediabat)|
-|blocked|8092|[database-service](#svcdatabase-xxxbat)|
+|Label|Port Public|Port Private<br/>(Tidak boleh diubah)|Nama Service|
+|-|-|:-:|-|
+|port-apk|8000 (contoh)|8000|[apk-ota service](#svcapk-otabat)|
+|port-gateway|7043 (contoh)|7443|[gateway-service](#svcgatewaybat)|
+|port-coll|blocked|8093|[collector-service](#svccollectorbat)|
+|port-media|blocked|8123|[media-service](#svcmediabat)|
+|port-db|blocked|8092|[database-service](#svcdatabase-xxxbat)|
 
 Maka berdasarkan port public di atas untuk pengecekan public URL yang harus dapat diakses sebagai berikut :
 
@@ -199,7 +210,7 @@ $ curl --insecure https://112.78.148.118:7043/collector/v1/get_server_info
 
 $ curl http://112.78.148.118:8000/apk/coll/app-release.apk
 ```
->  Jika tidak ada curl, bisa paste URL di browser Chrome)
+>  Jika tidak ada curl, bisa dicoba paste URL di browser Chrome)
 
 <br/>
 

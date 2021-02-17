@@ -15,12 +15,15 @@ Panduan ini berisi cara :
 1. Membuat database dengan nama `collmobile`
 1. Membuat user baru dengan nama `verenamc`
 
+>Instalasi Database CollMobile dilakukan di mesin database (bukan mesin aplikasi).
+
+
 ---
 ## Create `collmobile`
 1. Login ke aplikasi SSMS menggunakan Windows Authentication
 1. Setup Database Properties, ke bagian Security
 1. Klik kanan Database di Object Explorer, pilih **New Database....**
-1. Di layar New Daatbase, isi di kotak Database name: `collmobile`
+1. Di layar New Database, isi di kotak Database name: `collmobile`
 
 
 ## Create User `verenamc`

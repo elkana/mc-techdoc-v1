@@ -1,8 +1,8 @@
 module.exports = {
   docs: {
-    'Getting Started': ['installation', 'install_java_python', 'install_dbmssql', 'architecture', 'maintenance_server'],
+    'Getting Started': ['installation', 'install_java_python', 'install_dbmssql', 'architecture'],
     Update: ['update_mobile', 'update_microsvc'],
-    Troubleshooting: ['troubleshoot_mobile', 'troubleshoot_server'],
+    Troubleshooting: ['maintenance_server', 'troubleshoot_mobile', 'troubleshoot_server'],
     Lampiran: ['lampiran_tbl_setup'],
   },
   api: {

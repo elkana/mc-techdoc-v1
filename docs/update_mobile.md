@@ -11,9 +11,12 @@ sidebar_label: Update Mobile
 * Windows Explorer
 * SSMS
 
+## Estimation
+5 - 15 menit
+
 ## Step-by-step
 
-1. Akses ke mesin aplikasi, pastikan direktori `C:\u11\` masih ada. Jika tidak ada, lihat Panduan Instalasi Aplikasi.
+1. Akses ke mesin aplikasi, pastikan direktori `C:\u11\` masih ada. Jika tidak ada, lihat Panduan [Instalasi Aplikasi](installation).
 1. Backup folder `C:\u11\installer\apk` ke lokasi lain
 1. Extract file `patch-apk.zip` ke direktori `C:\u11\`
 1. Pastikan terdapat 4 (empat) file di lokasi berikut :
@@ -25,10 +28,10 @@ sidebar_label: Update Mobile
     |3|app-release.apk|37 MB|C:\u11\installer\apk\coll|
     |4|app-x86_64-release.apk|14 MB|C:\u11\installer\apk\coll\x86_64|
 
-1. Persiapkan informasi build number seperti di prasyarat no 2.
+1. Persiapkan informasi build number seperti di [prerequisite no 2](#prerequisites).
 1. Login ke aplikasi SSMS, buka koneksi ke database `collmobile`, cari table `[dbo].[mc_mst_mobile_setup]`
 1. Klik kanan table `dbo.mc_mst` → **Edit Top 200 Rows**
-1. Cari 4 keyname berikut, ubah angka yang berwarna merah di kolom _value1_ disesuaikan dengan informasi build number di prasyarat nomor 2.
+1. Cari 4 keyname berikut, ubah angka yang berwarna merah di kolom _value1_ disesuaikan dengan informasi build number di [prerequisite no 2](#prerequisites).
 
     |keyname|value1|value2|
     |-------|------|------|
@@ -45,8 +48,10 @@ sidebar_label: Update Mobile
     #### Penjelasan URL :
     Format URL berbentuk seperti berikut:
     ```
-    http://[*IP-Publik]:8000/apk/coll/[subpath]/[namafile.apk]
+    http://[*IP-Publik]:[port-apk]/apk/coll/[subpath]/[namafile.apk]
     ```
+
+    Lihat [port](installation#configure-port)
 
     >IP-Publik / Port bisa saja berubah-ubah tergantung kebijakan Network Administrator.  Penggunaan IP akan dipakai oleh mobile untuk memperbarui dirinya sendiri (self-update) pada saat **login online**.
     Karena MCS bisa beroperasi dalam keadaan offline, maka self-update tidak akan aktif sampai kondisi Close Batch atau Reset Local Data.
@@ -76,7 +81,7 @@ A: Misalkan mau menutup service Collector, lihat bagian TaskBar dan lihat judul 
 ---
 ## Lampiran
 
-Opsi Update table via SQL Query
+Contoh Opsi Update table via SQL Query
 ```
 update mc_mst_mobile_setup set value1 = @buildnumber value2 = 'http://112.78.148.118:8000/apk/coll/app-release.apk' where keyname = 'VERSION_COLL_FL_ANDROID'
  
