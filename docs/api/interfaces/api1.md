@@ -5,6 +5,9 @@ sidebar_label: Collector Service
 
 Port : `8093`
 
+Lihat [port-coll](installation#configure-port)
+
+---
 ## Photo Contract
 
 
@@ -125,5 +128,4 @@ Mendapatkan profil foto collector
 ```
 /collector/media/v1/profile_pic/0001/0016074932
 ```
-
 

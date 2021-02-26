@@ -8,6 +8,7 @@ module.exports = {
   api: {
     'Public API': [
       'api/interfaces/api1',
+      'api/interfaces/api_db',
     ]
   }
 
